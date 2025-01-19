@@ -3,7 +3,13 @@ const cors=require('cors');
 const axios=require('axios');
 
 const app = express();
-app.use(cors());
+const cors = require("cors");
+
+app.use(cors({
+    origin: "*",   // Allow all origins
+    methods: ["GET"]
+}));
+
 
 app.use(express.json());
  app.get("/api/advice", async (req, res) => {
@@ -14,13 +20,5 @@ app.use(express.json());
             res.status(500).json({error: "Error getting message from API"});
  }
 });
-
-
-
-
-
-
-
-
 
 app.listen(5000,()=> console.log('server listening on port 5000'));
